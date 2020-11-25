@@ -1,0 +1,17 @@
+#전화번호부의 길이 선언
+n = int(input())
+#위 선언한 n개만큼 여러쌍의 인자 입력받음.
+name_numbers = [input().split() for i in range(n)]
+#입력 받은 두 쌍의 인자들로 딕셔너리 컴프리헨션.
+phone_book = {k: v for k,v in name_numbers}
+
+# 몇 개의 확인(input name)이 입력될지 모르니 while문 사용.
+while True:
+    try:
+        name=input()
+        if name in phone_book.keys():
+            print(f'{name}={phone_book[name]}')
+        else:
+            print("Not found")
+    except:
+        break
