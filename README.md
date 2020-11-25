@@ -1,2 +1,2 @@
 # HackerRank
-python coding practice
+python 코딩 연습
