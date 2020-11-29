@@ -1,0 +1,14 @@
+import numpy as np
+n,m=map(int,input().split( ))
+a=[list(map(int,input().split())) for i in range(n)]
+b=[list(map(int,input().split())) for i in range(n)]
+a,b=np.array(a),np.array(b)
+
+print(a+b)
+print(a-b)
+print(a*b)
+print(a//b)
+print(a%b)
+print(a**b)
+
+
