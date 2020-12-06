@@ -1,0 +1,52 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+from functools import reduce
+from fractions import gcd
+
+#
+# Complete the 'getTotalX' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY a
+#  2. INTEGER_ARRAY b
+#
+
+def getTotalX(a, b):
+    # Write your code here
+    
+    #gcd : 최대공약수 
+    #brr의 최대 공약수를 구함. reduce를 이용하여 다중입력이 가능하게 함.
+    gcd_b = reduce(gcd, b)
+    
+    #lcm : 최소 공배수
+    #arr의 최소 공배수를 구함. reduce를 이용하여 다중입력이 가능하게 함.
+    lcm_a = reduce(lambda x,y: x*y//gcd(x,y), a)
+    
+    #최소공배수부터 최대공약수까지 최소공배수만큼의 등차수열에서
+    #최대공약수로 나눠지는 수의 개수를 구함.
+    return sum(1 for x in range(lcm_a,gcd_b+1,lcm_a) if gcd_b%x==0)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    n = int(first_multiple_input[0])
+
+    m = int(first_multiple_input[1])
+
+    arr = list(map(int, input().rstrip().split()))
+
+    brr = list(map(int, input().rstrip().split()))
+
+    total = getTotalX(arr, brr)
+
+    fptr.write(str(total) + '\n')
+
+    fptr.close()
