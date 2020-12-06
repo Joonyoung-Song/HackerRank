@@ -1,0 +1,42 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the dayOfProgrammer function below.
+def dayOfProgrammer(year):
+    if year==1918:
+        dd=26
+    elif year>=1919:
+        if year%400==0:
+            dd=12
+        # elif year==1800:
+        #     dd=12
+        elif year%100==0:
+            dd=13
+        elif year%4==0:
+            dd=12
+        else:
+            dd=13
+    else :
+        if year%4==0:
+            dd=12
+        else :
+            dd=13
+
+    mm="09"
+    return f"{dd}.{mm}.{year}"
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    year = int(input().strip())
+
+    result = dayOfProgrammer(year)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
