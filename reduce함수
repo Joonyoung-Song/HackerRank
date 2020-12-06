@@ -1,0 +1,51 @@
+##reduce 함수 : 다음과 같이 iterable 의 요소들을 function 에 대입하여 결국 하나의 결과값을 리턴해 주는 함수
+
+
+
+
+
+▶예제 1) sum만들기
+>>> def sum(x, y): 
+... return x+y 
+... 
+>>> reduce(sum, [1, 2, 3, 4, 5]) 
+15
+
+▶예제 2) lamda적용하기
+>>> reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) 
+15
+
+
+
+
+
+##연산의 초기값을 지정해줄 수도 있다.
+
+▶예제3) 초기값 지정하기
+>>> reduce(lambda x, y: x+y, [1, 2, 3, 4, 5], 10) 
+25
+  연산과정 : (((((10+1)+ 2)+ 3)+4)+5)=25
+
+
+
+
+
+##응용하여 팩토리얼 함수를 만들수도 있다.
+
+▶예제4) 팩토리얼 만들기
+>>> def factorial(n): 
+... return reduce(lambda x, y: x*y, range(1, n+1)) 
+... 
+>>> factorial(6) 
+720
+
+
+
+
+
+##응용하여 최대값을 구하는 함수를 만들수도 있다.
+
+▶예제5) 최대값 출력 함수 만들기
+>>> func = lambda a, b: a if (a > b) else b 
+>>> reduce(func, [34, 76, 29, 96, 68]) 
+96
