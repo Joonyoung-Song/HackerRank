@@ -1,0 +1,39 @@
+
+#비효율적 코드
+
+#!/bin/python3
+
+import os
+import sys
+
+#
+# Complete the pageCount function below.
+#
+def pageCount(n, p):
+    #
+    # Write your code here.
+    a=[i for i in range(n+1)].index(p)//2
+    b=[i for i in reversed(range(n+1))].index(p)//2
+    if n-p==1 and n%2==0:
+        return min(a,b+1)
+    else :
+        return min(a,b)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    p = int(input())
+
+    result = pageCount(n, p)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+#################################################################3
+효율적 코드
+
+def pageCount(n, p):
+    print(min(p//2, n//2 - p//2))
