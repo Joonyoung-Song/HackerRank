@@ -1,0 +1,19 @@
+def countingValleys(steps, path):
+    # Write your code here
+    result,step=0,0
+    # for i in path:
+    #     if i=='U':
+    #         step+=1
+    #     else :
+    #         step-=1       
+    #     if step==0 and i=='U':
+    #         result+=1
+    # return result
+
+    for i in path:
+        step+=1 if i=='U' else -1
+        result+= step==0 and i=='U'
+    return result  
+            
+            
+주석처리된 이프문과 아래 이프문은 같은 의미이다
